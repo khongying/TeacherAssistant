@@ -44,14 +44,16 @@ public class MainActivity extends AppCompatActivity {
                                 "passwd=" + Pass
                         );
                         JsonString = get_data_form.get().toString();
+
                         JSONObject jsonObject = new JSONObject(JsonString);
+                        String dataTA = jsonObject.getString("data");
                         status = jsonObject.getBoolean("status");
                         message = jsonObject.getString("massage");
 
                         if (status == true){
                             Toast.makeText(MainActivity.this,message.toString(),Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MainActivity.this,MenuActivity.class);
-                            intent.putExtra("TaData",JsonString);
+                            intent.putExtra("TaData",dataTA);
                             startActivity(intent);
 
                         }else {

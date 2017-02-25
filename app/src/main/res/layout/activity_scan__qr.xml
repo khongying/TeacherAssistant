@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_scan__qr"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="team.bsru.lottae.teacherassistant.Scan_QR">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_dark"
+        android:theme="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
+        android:id="@+id/toolbar2"
+        app:logo="@drawable/back"
+        app:title="                     Scan QR"
+        app:titleTextColor="@android:color/darker_gray" />
+</RelativeLayout>
