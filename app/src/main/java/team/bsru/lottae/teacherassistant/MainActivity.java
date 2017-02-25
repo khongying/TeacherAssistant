@@ -8,10 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
     private Button LoginButton;
     private EditText UserEditText;
     private EditText PassEditText;
+    private String JsonString;
+    private Boolean status;
+    private String message;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +33,38 @@ public class MainActivity extends AppCompatActivity {
                 String User = UserEditText.getText().toString();
                 String Pass = PassEditText.getText().toString();
                 if(User.equals("") || Pass.equals("")){
-                    Toast.makeText(MainActivity.this,"มีช่องว่างกรุณากรอกให้ครบ",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,"กรุณากรองให้ครบ",Toast.LENGTH_SHORT).show();
+
                 }else {
-                    Toast.makeText(MainActivity.this,"เข้าสู้ระบบสำเร็จ",Toast.LENGTH_LONG).show();
+                    try {
+                        Get_Data_Form get_data_form = new Get_Data_Form(MainActivity.this);
+                        MyConstant myConstant = new MyConstant();
+                        get_data_form.execute(myConstant.getServiceLoginTA()+
+                                "username="  +User+ "&"+
+                                "passwd=" + Pass
+                        );
+                        JsonString = get_data_form.get().toString();
+                        JSONObject jsonObject = new JSONObject(JsonString);
+                        status = jsonObject.getBoolean("status");
+                        message = jsonObject.getString("massage");
+
+                        if (status == true){
+                            Toast.makeText(MainActivity.this,message.toString(),Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(MainActivity.this,MenuActivity.class);
+                            intent.putExtra("TaData",JsonString);
+                            startActivity(intent);
+
+                        }else {
+                            Toast.makeText(MainActivity.this,message.toString(),Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }catch (Exception e){
+
+                    }
                 }
 
 
-//                Intent intent = new Intent(MainActivity.this,MenuActivity.class);
-//                startActivity(intent);
             }
         });
     }
