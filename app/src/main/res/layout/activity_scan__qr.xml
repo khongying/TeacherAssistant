@@ -5,7 +5,8 @@
     android:id="@+id/activity_scan__qr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="team.bsru.lottae.teacherassistant.Scan_QR">
+    tools:context="team.bsru.lottae.teacherassistant.Scan_QR"
+    android:background="@drawable/unnamed">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
@@ -15,6 +16,46 @@
         android:minHeight="?attr/actionBarSize"
         android:id="@+id/toolbar2"
         app:logo="@drawable/back"
-        app:title="                     Scan QR"
+        app:title="                         Scan"
         app:titleTextColor="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/barcode"
+                    android:id="@+id/imageButton7" />
+
+                <TextView
+                    android:text="QR Code And Barcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView8"
+                    android:textAlignment="center"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
 </RelativeLayout>

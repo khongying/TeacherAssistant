@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(MainActivity.this,MenuActivity.class);
                             intent.putExtra("TaData",dataTA);
                             startActivity(intent);
+                            finish();
 
                         }else {
                             Toast.makeText(MainActivity.this,message.toString(),Toast.LENGTH_SHORT).show();

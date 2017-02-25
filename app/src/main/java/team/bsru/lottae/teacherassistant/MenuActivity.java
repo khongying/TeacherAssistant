@@ -17,11 +17,10 @@ import org.json.JSONObject;
 public class MenuActivity extends AppCompatActivity {
     private Toolbar nameToolbar;
     private String jsonString;
-    private ImageButton QRButton;
-    private static final String STRING = "com.google.zxing.client.android.SCAN";
-    private String[] modeStrings = new String[]{"QR_CODE_MODE", "BAR_CODE_MODE"};
-    private int[] modeInts = new int[]{0,1};
-    private String result;
+    private ImageButton ScanButton;
+    private ImageButton ListImageButton;
+    private Button outButton;
+
 
 
 
@@ -29,7 +28,9 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        QRButton = (ImageButton) findViewById(R.id.imageButton);
+        ScanButton = (ImageButton) findViewById(R.id.imageButton);
+        ListImageButton = (ImageButton) findViewById(R.id.imageButton2);
+        outButton = (Button) findViewById(R.id.button3);
 
         nameToolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -45,12 +46,29 @@ public class MenuActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        QRButton.setOnClickListener(new View.OnClickListener() {
+        ScanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this,Scan_QR.class);
+                intent.putExtra("data_TA", jsonString);
+                startActivity(intent);
 
-               myScan(modeStrings[0],modeInts[0]);
 
+            }
+        });
+        outButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        ListImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this,List_Data_Activity.class);
+                intent.putExtra("data_TA",jsonString);
+                startActivity(intent);
             }
         });
 
@@ -61,36 +79,7 @@ public class MenuActivity extends AppCompatActivity {
 
     }// main method
 
-    @Override
-    protected void onActivityResult(int requestCode,
-                                    int resultCode,
-                                    Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK) {
-
-            String[] strings = new String[]{"QR code = ", "BAR code = "};
-            result = data.getStringExtra("SCAN_RESULT");
-           Toast.makeText(MenuActivity.this,result,Toast.LENGTH_SHORT).show();
-
-        }   // if
 
 
-    }
 
-    private void myScan(String modeString, int modeInt) {
-
-        try {
-
-            Intent intent = new Intent(STRING);
-            intent.putExtra("SCAN_MODE", modeString);
-            startActivityForResult(intent, modeInt);
-
-
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, "Please Install Barcode Scanner",
-                    Toast.LENGTH_SHORT).show();
-        }
-
-    }   // myScan
 }
