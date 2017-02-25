@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Teacher Assistant</string>
+    <string name="data">ดูข้อมูล</string>
+    <string name="qr">สแกน QR-Code</string>
 </resources>
