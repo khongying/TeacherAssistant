@@ -9,6 +9,7 @@ public class MyConstant {
     private String serviceLoginTA = "http://tait.bsruteam.tk/Service_php_for_android/service/ServiceLoginTa.php?";
     private String serviceCheckQRandBar ="http://tait.bsruteam.tk/Service_php_for_android/service/serviceCheckName.php?";
     private String serviceGetDateList = "http://tait.bsruteam.tk/Service_php_for_android/service/ServiceGetListDate.php?";
+    private String serviceGetStuByDate ="http://tait.bsruteam.tk/Service_php_for_android/service/ServiceGetStuByDate.php?";
 
     public String getServiceLoginTA() {
 
@@ -21,5 +22,9 @@ public class MyConstant {
 
     public String getServiceGetDateList() {
         return serviceGetDateList;
+    }
+
+    public String getServiceGetStuByDate() {
+        return serviceGetStuByDate;
     }
 }

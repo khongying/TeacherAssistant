@@ -2,4 +2,13 @@
     <string name="app_name">Teacher Assistant</string>
     <string name="data">ดูข้อมูล</string>
     <string name="qr">สแกน QR-Code</string>
+    <string name="date">ดูการขัอมูลมาเรียน</string>
+    <string name="count">ครั้งที่</string>
+    <string name="stu_pass">คนที่มาเรียน</string>
+    <string name="title">TA วิชาเทคโนโลยีบูรณาการ</string>
+    <string name="stu">นิสิตที่มาเรียน</string>
+    <string name="num">เลขที่</string>
+    <string name="code">รหัสนิสิต</string>
+    <string name="name">ชื่อ-นามสกุล</string>
+    <string name="numcount">ลำดับที่</string>
 </resources>
